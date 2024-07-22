@@ -9,7 +9,9 @@ SISTEMA DE SALVAR USUARIOS
 
 */
 /*
+BUGS
 O SISTEMA DE SALVAR USUARIOS SÓ CONSEGUE SALVAR UM UNICO USUARIO 11/05/2024
+
 
 */
 
@@ -60,6 +62,11 @@ enviar.addEventListener('click',() =>{
 		console.log(buscar_usuarios.email)
 
 	let procurar_email = buscar_usuarios.find((buscar_usuarios) => buscar_usuarios.email === email) || false;
+		console.log(procurar_email)
+
+	// VERIFICAR ESPAÇO VAZIO
+
+	let procurar_vazio = dados_coletados.find((dados_coletados) => dados_coletados.email_repassado === email) || false;
 		console.log(procurar_email)
 
 	if(procurar_email === false){
