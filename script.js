@@ -11,7 +11,13 @@ SISTEMA DE SALVAR USUARIOS
 /*
 BUGS
 O SISTEMA DE SALVAR USUARIOS SÓ CONSEGUE SALVAR UM UNICO USUARIO 11/05/2024
+A VERIFICAÇÃO DE EMAILS NÃO ESTÁ FUNCIONANDO 23/07/2024
 
+*/
+/*
+FIXES
+
+VERIFICAÇÃO DE EMAILS CORRIGIDA 23/07/2024
 
 */
 
@@ -68,25 +74,46 @@ enviar.addEventListener('click',() =>{
 	
 	localStorage.setItem('usuarios novos',JSON.stringify( usuarios_novos))
 	
+	console.log('---------FUNÇÃO ADICIONAR NOVOS USUARIOS---------------')
+	function adicionar_novosUsuarios(){
+		let usuarios_Novos = JSON.parse(localStorage.getItem('usuarios novos'))	
+		console.log(usuarios_Novos)
+		
+		let usuarios_Novos_Email = usuarios_Novos.email_repassado
+		console.log(usuarios_Novos_Email)
+
+		let email_repassado = dados_coletados.email_repassado
+		console.log(email_repassado)
+
+		if(email_repassado === usuarios_Novos.email){
+			alert('11111111')
+		}
+		else{
+			alert('22222222')
+		}
+	}
+
+	adicionar_novosUsuarios()
+	console.log('------------------------')
+
 	// VERIFICAR SE EMAIL JÁ EXISTE
 	console.log('######### VERIFICAR EMAIL EXISTENTE #########');
-	
-	let buscar_usuarios = JSON.parse(localStorage.getItem('usuarios'))
-		console.log('------------------BUSCAR USUARIOS----------------------');
-		console.log(buscar_usuarios)
-		console.log(buscar_usuarios.email)
 
-	let procurar_email = buscar_usuarios.find((buscar_usuarios) => buscar_usuarios.email === email) || false;
+	let buscar_usuarios = JSON.parse(localStorage.getItem('usuarios'))
+		console.log('------------------RESGATAR USUARIOS----------------------');
+		console.log(buscar_usuarios)
+
+	let procurar_email = buscar_usuarios.find((usuarios) => usuarios.email === email) || false;
 		console.log('---------PROCURAR EMAIL NOS USUARIOS BUSCADOS----------');
 		console.log(procurar_email)
 
 	// VERIFICAR ESPAÇO VAZIO
 	console.log('######### VERIFICAR ESPAÇO VAZIO #########');
-
+/*
 	let procurar_vazio = dados_coletados.find((dados_coletados) => dados_coletados.email_repassado === email) || false;
 		console.log('---------PROCURAR VAZIO----------');
 		console.log(procurar_vazio)
-
+*/
 	if(procurar_email === false){
 		alert("ESTE EMAIL NÃO FOI CADASTRADO")
 	}
